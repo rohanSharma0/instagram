@@ -1,0 +1,76 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+  <script src="https://kit.fontawesome.com/43a122f542.js"></script>
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <div class="fixed-top row " id="navbar">
+    <div class=" logo-sec col-md-5 col-6">
+      <!-- logo -->
+      <a href="{% url 'login' %}" class="navlogo"><i class="fab fa-instagram"></i></a>
+      <i class="nav-logo1-bar"></i>
+      <img src="{% static 'main/img/insta.png' %}" alt="logo" class="logofont">
+    </div>
+    <div class=" search-sec col-md-2  ">
+      <!-- search -->
+      <form class="form-inline" action="" method="POST">
+        {% csrf_token %}
+        <input class="form-control search-sec" type="search" placeholder="Search">
+      </form>
+    </div>
+    <div class=" icon-sec col-md-5 col-6">
+      <!-- profile-icon -->
+      <a class="profile-icon" href="{% url 'profile' user.username %}"></a>
+    </div>
+  </div>
+  {% block content %}{% endblock content %}
+    <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll > 60) {
+          $("#navbar").addClass("scrolled");
+        } else {
+          $("#navbar").removeClass("scrolled");
+        }
+      })
+    })
+  </script>
+  <script>
+      function openTab(evt, tabname) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("edit-profile-tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("edit-profile-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabname).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+  
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
+</html>

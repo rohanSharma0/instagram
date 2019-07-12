@@ -1,0 +1,78 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="modal fade fast" id="ChangeProfileImage">
+  <div class="modal-dialog  modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="unfollow-content-avtar">
+        <img src="{{ post.post_user.profile.profile_image.url }}" alt="unfollow-content-avtar" class="unfollow-content-avtar-img">
+      </div>
+      <form action="" class="edit-profile-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profileimg_form }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <a class="custom-btn btn-cancel" data-dismiss="modal">Cancel</a>
+    </div>
+  </div>
+</div>
+
+
+  <main class="container edit-profile-conatiner">
+    <div class="row">
+      <div class="edit-profile-tab">
+        <button class="edit-profile-tablinks" onclick="openTab(event, 'editProfile')" id="defaultOpen">Edit Profile</button>
+        <button class="edit-profile-tablinks" onclick="openTab(event, 'changePassword')">Change Password</button>
+      </div>
+
+      <div id="editProfile" class="edit-profile-tabcontent">
+        <div class="edit-profile">
+          <div class="edit-profile-avtar">
+            <img src="{{user.profile.profile_image.url}}" alt="edit-profile-avtar" class="edit-profile-avtar-image rounded-circle">
+          </div>
+          <div class="edit-profile-info">
+            <p>{{user.username}}</p>
+            <a class="fas fa-cog " data-toggle="modal" data-target="#ChangeProfileImage">Change Profile Photo</a>
+          </div>
+        </div>
+        <form action="" class="edit-profile-form" method="POST">
+          {% csrf_token %}
+          {{ p_form }}
+          <p>Private Information</p>
+          {{ u_form }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <div id="changePassword" class="edit-profile-tabcontent">
+        <div class="edit-profile">
+          <div class="edit-profile-avtar">
+            <img src="{{user.profile.profile_image.url}}" alt="edit-profile-avtar" class="edit-profile-avtar-image rounded-circle">
+          </div>
+          <div class="edit-profile-info">
+            <p>{{user.username}}</p>
+            <a class="" data-toggle="modal" data-target="#ChangeProfileImage">Change Profile Photo</a>
+          </div>
+        </div>
+        <form action="" class="edit-profile-form" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="password-old">Old Password</label>
+            <input type="password" class="form-control" id="password-old" name="password-old">
+          </div>
+          <div class="form-group">
+            <label for="password1">New Password</label>
+            <input type="password" class="form-control" id="password1" name="password1">
+          </div>
+          <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+  {% endblock content %}

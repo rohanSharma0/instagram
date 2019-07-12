@@ -1,0 +1,68 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+  <!-- Settings -->
+  <div class="modal fade fast" id="settings">
+    <div class="modal-dialog  modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <a class="custom-btn" href="{% url 'logout' %}">Log Out</a>
+        <a class="custom-btn btn-cancel" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- main -->
+
+  <main class="profile-container container">
+    <div class="row">
+      <div class="profile-header col-12">
+        <div class="profile-header-avtar">
+          <img src="{{user.profile.profile_image.url}}" alt="profile-header-avtar" class="profile-header-avtar-img rounded-circle">
+        </div>
+        <div class="profile-header-body">
+          <div class="profile-header-body-sec">
+            <p class="profile-body-username">{{user.username}}</p>
+            <a href="{% url 'editprofile' user.username %}" class="profile-body-editprofile">Edit Profile</a>
+            <a class="fas fa-cog " data-toggle="modal" data-target="#settings"></a>
+          </div>
+          <div class="profile-header-body-sec">
+            <p class="profile-body-name">{{user.profile.display_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#post">POSTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#upload">UPLOAD</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="post" class="container tab-pane active" style="
+      padding-bottom: 3rem;">
+        <div class="tab-post-container">
+          {% for post in posts %}
+          {% if post.post_user.username == user.username%}
+            <div class="tab-post-container-img">
+              <img src="{{post.post_image.url}}" alt="post-image" class="post-image-img">
+            </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div id="upload" class="container tab-pane fade">
+        <form action="" class="upload-img-form" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

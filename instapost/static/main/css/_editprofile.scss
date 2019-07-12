@@ -1,0 +1,101 @@
+.edit-profile-conatiner {
+  margin-top: 130px!important;
+  /* Style the tab content */
+  .edit-profile-tabcontent {
+    float: left;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 75%;
+    border-left: none;
+    padding: 2rem;
+    // Edit Form
+    form.edit-profile-form {
+      margin-top: 2rem;
+
+      .form-group {
+        display: flex;
+        flex-direction: row;
+      }
+
+      label {}
+    }
+  }
+  /* Style the tab */
+  .edit-profile-tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 25%;
+    /* Style the buttons inside the tab */
+    button {
+      display: block;
+      background-color: #fff;
+      color: #343434;
+      padding: 15px 25px;
+      width: 100%;
+      border: none;
+      border-left: 2px solid #fff;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    button:hover {
+      border-left: 2px solid #ddd;
+      background-color: #f9f9f9;
+    }
+    /* Create an active/current "tab button" class */
+    button.active {
+      border-left: 2px solid #343434;
+      font-weight: 700;
+    }
+
+    button.active:hover {
+      border-left: 2px solid #343434;
+      font-weight: 700;
+      background-color: #fff;
+    }
+  }
+
+  div.edit-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    div.edit-profile-avtar {
+      max-width: fit-content;
+
+      img.edit-profile-avtar-image {
+        width: 90%;
+      }
+    }
+
+    div.edit-profile-info {
+      margin-left: 1rem;
+
+      p {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+      label.upload-profile-image {
+        cursor: pointer;
+        background-color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0984e3;
+        padding: 0;
+        border: 0;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+  }
+}

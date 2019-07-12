@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+  <!-- Settings -->
+  <div class="modal fade fast" id="unfollow">
+    <div class="modal-dialog  modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="unfollow-content-avtar">
+          <img src="{{ post.post_user.profile.profile_image.url }}" alt="unfollow-content-avtar" class="unfollow-content-avtar-img">
+        </div>
+        <p class="unfollow">Unfollow @{{ post.post_user.profile.profile_image.url }}?</p>
+        <a class="custom-btn custom-btn-red" href="">Unfollow</a>
+        <a class="custom-btn btn-cancel" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- main -->
+
+  <main class="profile-container container">
+    <div class="row">
+      <div class="profile-header col-12">
+        <div class="profile-header-avtar">
+          <img src="{{ post.post_user.profile.profile_image.url }}" alt="profile-header-avtar" class="profile-header-avtar-img">
+        </div>
+        <div class="profile-header-body">
+          <div class="profile-header-body-sec">
+            <p class="profile-body-username">{{ post.post_user.profile.profile_image.url }}</p>
+            <a class="profile-body-editprofile" data-toggle="modal" data-target="#unfollow">Following</a>
+          </div>
+          <div class="profile-header-body-sec">
+            <p>0 post</p>
+            <a href="#">808 followers</a>
+            <a href="#">111 followings</a>
+          </div>
+          <div class="profile-header-body-sec">
+            <p class="profile-body-name">{{ post.post_user.profile.display_name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#post">POSTS</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="post" class="container tab-pane active">
+        <div class="tab-post-container">
+          <div class="tab-post-container-img"></div>
+          <div class="tab-post-container-img"></div>
+          <div class="tab-post-container-img"></div>
+          <div class="tab-post-container-img"></div>
+          <div class="tab-post-container-img"></div>
+          <div class="tab-post-container-img"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% endblock content %}

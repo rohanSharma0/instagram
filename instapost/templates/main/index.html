@@ -1,0 +1,93 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Post Option -->
+  <div class="modal fade fast" id="post-option">
+    <div class="modal-dialog  modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <a class="custom-btn custom-btn-red " href="#">Unfollow</a>
+        <a class="custom-btn" href="#">Go to post</a>
+        <a class="custom-btn btn-cancel" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
+
+  <main class="container">
+    <div class="row">
+      <!-- post-content -->
+      <div class="col-lg-8 col-12">
+        <div class="post-container">
+            {% for post in posts %}
+            <div class="post-content">
+              <div class="post-header">
+                <div class="post-header-left">
+                  <div class="post-header-avtar">
+                    <img src="{{ post.post_user.profile.profile_image.url }}" alt="post-header-avtar " class="post-header-avtar-image rounded-circle" >
+                  </div>
+                  <div class="post-header-info">
+                    <a style="
+                    margin-left: 0.5rem;
+                    text-decoration: none;
+                    color: #000;
+                    font-size: 14px;
+                    font-weight: 700;
+                " class="post-header-info-name" href="#">{{ post.post_user.username}}</a>
+                    <p class="post-header-info-place">{{ post.post_location }} </p>
+                  </div>
+                </div>
+                <a class="post-header-right" data-toggle="modal" data-target="#post-option">
+                  <span class="post-header-toggle-icon"></span>
+                </a>
+              </div>
+              <div class="post-image">
+                <img src="{{post.post_image.url}}" alt="post-image" class="post-image-img">
+              </div>
+              <div class="post-footer">
+                <p>{{post.post_caption}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- sidebar -->
+      <div class=" sidebar col-lg-4 col-12">
+        <div class="sidebar-profile">
+          <div class="sidebar-profile-avtar">
+            <img src="{{user.profile.profile_image.url}}" alt="sidebar-profile-avtar" class="sidebar-profile-avtar-image rounded-circle">
+          </div>
+          <div class="sidebar-profile-info">
+            <a class="sidebar-profile-info-username" href="{% url 'profile' user.username %}">{{user.username}}</a>
+            <p class="sidebar-profile-info-name">{{user.profile.display_name}}</p>
+          </div>
+        </div>
+        <div class="sidebar-sec-1">
+        </div>
+        <div class="sidebar-sec-2">
+        </div>
+      </div>
+    </div>
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a href="?page=1" class=" btn btn-outine-info mb-4">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class=" btn btn-outine-info mb-4">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a href="?page={{ num }}" class=" btn btn-info mb-4">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a href="?page={{ num }}" class=" btn btn-outine-info mb-4">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class=" btn btn-outine-info mb-4">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class=" btn btn-outine-info mb-4">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </main>
+{% endblock content %}

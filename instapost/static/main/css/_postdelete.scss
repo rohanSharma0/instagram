@@ -1,0 +1,20 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.post-detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+
+  .post-detail-img{
+    width: 70%;
+    img{
+      width: 100%;
+    }
+  }
+  .container{
+    width: 30%;
+  }
+}
