@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
+$p-color: #574b90;
+$s-color: #2c2c54;
+@media (min-width: 992px) {
+  body {
+    div.login-container,
+    div.register-container {
+      .sidebanner {
+        display: block!important;
+      }
+    }
+  }
+}
+
+body {
+  background-color: #dfe6e9;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+
+  div.login-container,
+  div.register-container {
+    height: 100vh;
+    width: 100%;
+
+    .sidebanner {
+      display: none;
+    }
+
+    form.login-form,
+    form.register-form {
+      max-width: 100%;
+      width: 370px;
+      padding: 15px;
+
+      .lastname-input {
+        border-top-right-radius: 10rem;
+        border-bottom-right-radius: 10rem;
+      }
+
+      .firstname-input {
+        border-top-left-radius: 10rem;
+        border-bottom-left-radius: 10rem;
+      }
+
+      .form-control {
+        font-size: 14px;
+        min-width: 48px;
+        font-weight: 500;
+      }
+
+      .form-control:active,
+      .form-control:focus,
+      .form-control:hover {
+        border: 1px solid $s-color;
+        box-shadow: 0 0 0 0.2rem rgba($s-color,.30);
+      }
+
+      .text-link {
+        text-decoration: none;
+        color: $p-color;
+      }
+
+      .btn-custom {
+        background-color: $p-color;
+        color: #fff;
+      }
+
+      .btn-custom:hover {
+        background-color: $s-color;
+      }
+
+      .btn-custom:active,
+      .btn-custom:focus {
+        box-shadow: 0 0 0 0.2rem rgba($p-color,.30);
+      }
+
+      .text-link:focus,
+      .text-link:hover {
+        text-decoration: none;
+        color: $s-color;
+      }
+    }
+  }
+}
